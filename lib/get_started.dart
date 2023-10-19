@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import SystemChrome
+import 'package:flutter/services.dart'; 
 import 'home.dart';
 
 class GetStartedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Atur StatusBar menjadi transparan
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
@@ -14,11 +13,11 @@ class GetStartedPage extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'assets/images/get-started.png', // Ganti dengan path gambar Anda
+            'assets/images/get-started.png', 
             fit: BoxFit.cover,
           ),
           Positioned(
-            bottom: 78.0, // Jarak 82px dari bawah
+            bottom: 78.0, 
             left: 0,
             right: 0,
             child: Center(
@@ -28,13 +27,12 @@ class GetStartedPage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  minimumSize: Size(168, 56), // Atur ukuran tombol di sini
+                  minimumSize: Size(168, 56), 
                 ),
                 onPressed: () {
-                  // Kembali ke pengaturan StatusBar sebelumnya
                   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
                     statusBarColor:
-                        Color(0xFF20B4BC), // Ganti dengan warna StatusBar sebelumnya
+                        Color(0xFF20B4BC), 
                   ));
                   Navigator.push(
                     context,
@@ -45,7 +43,7 @@ class GetStartedPage extends StatelessWidget {
                   'Get Started',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18, // Atur ukuran teks di sini
+                    fontSize: 18, 
                   ),
                 ),
               ),

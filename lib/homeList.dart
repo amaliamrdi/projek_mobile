@@ -13,10 +13,10 @@ class _homeListState extends State<homeList> {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16), 
-            topRight: Radius.circular(16),
-          ),
+          // borderRadius: BorderRadius.only(
+          //   topLeft: Radius.circular(16), 
+          //   topRight: Radius.circular(16),
+          // ),
           color: Color(0xFF20B4BC),
         ),
         child: ListView.builder(
