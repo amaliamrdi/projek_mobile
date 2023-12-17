@@ -1,28 +1,62 @@
 import 'package:flutter/material.dart';
-import 'dataWisata.dart';
+import 'package:projek_mobile/models/tempatWisata.dart';
 import 'DetailPage.dart';
+import 'api/api.dart';
 
 class homeList extends StatefulWidget {
+  final TextEditingController searchController;
+
+  const homeList({Key? key, required this.searchController}) : super(key: key);
+
   @override
-  _homeListState createState() => _homeListState();
+  _HomeListState createState() => _HomeListState();
 }
 
-class _homeListState extends State<homeList> {
+class _HomeListState extends State<homeList> {
+  final Api api = Api();
+  late List<TempatWisata> allData;
+  late List<TempatWisata> filteredData;
+
+  @override
+  void initState() {
+    super.initState();
+    api.getAllWisata().then((data) {
+      setState(() {
+        allData = data;
+        filteredData = allData;
+      });
+    });
+    widget.searchController.addListener(_onSearchChanged);
+  }
+
+  @override
+  void dispose() {
+    widget.searchController.removeListener(_onSearchChanged);
+    super.dispose();
+  }
+
+  void _onSearchChanged() {
+    String query = widget.searchController.text.toLowerCase();
+    List<TempatWisata> filtered = allData.where((tempat) {
+      return tempat.nama.toLowerCase().contains(query);
+    }).toList();
+
+    setState(() {
+      filteredData = filtered;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          // borderRadius: BorderRadius.only(
-          //   topLeft: Radius.circular(16), 
-          //   topRight: Radius.circular(16),
-          // ),
           color: Color(0xFF20B4BC),
         ),
         child: ListView.builder(
-          itemCount: daftarTempatWisata.length,
+          itemCount: filteredData.length,
           itemBuilder: (context, index) {
-            TempatWisata tempat = daftarTempatWisata[index];
+            TempatWisata tempat = filteredData[index];
             return InkWell(
               onTap: () {
                 Navigator.of(context).push(
@@ -34,11 +68,11 @@ class _homeListState extends State<homeList> {
               child: Container(
                 margin: EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)), 
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                   border: Border.all(color: Colors.white, width: 0.5),
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(20)), 
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                   child: Container(
                     color: Colors.white,
                     child: Row(
@@ -84,7 +118,7 @@ class _homeListState extends State<homeList> {
                                       width: 4,
                                     ),
                                     Text(
-                                      'Rp ${tempat.htm.toStringAsFixed(0)}',
+                                      'Rp ' + tempat.htm,
                                       style: TextStyle(
                                         color: Colors.grey,
                                       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dataWisata.dart';
+import 'models/tempatWisata.dart';
 
 class DetailPage extends StatelessWidget {
   final TempatWisata tempat;
@@ -75,7 +75,7 @@ class DetailPage extends StatelessWidget {
                       ),
                       SizedBox(width: 16),
                       Text(
-                        'Rp ${tempat.htm.toStringAsFixed(0)}',
+                        'Rp'+tempat.htm,
                         style: TextStyle(
                           fontSize: 16.0,
                         ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projek_mobile/homeList.dart';
 import 'package:projek_mobile/Header.dart';
@@ -10,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,13 +21,12 @@ class _HomePageState extends State<HomePage> {
           children: [
             Header(),
             SizedBox(height: 16),
-            Search(),
+            Search(searchController: _searchController),
             SizedBox(height: 16),
             CategoryList(),
             SizedBox(height: 16),
             Container(
-              width: double
-                  .infinity, // Mengatur lebar Container menjadi penuh lebar layar
+              width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16),
@@ -33,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 color: Color(0xFF20B4BC),
               ),
               child: Padding(
-                padding: EdgeInsets.all(12), // Menambahkan padding horizontal
+                padding: EdgeInsets.all(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            homeList(),
+            homeList(searchController: _searchController),
           ],
         ),
       ),

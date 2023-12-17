@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608010906597",
+    "project_id": "sumbawa-5a623",
+    "storage_bucket": "sumbawa-5a623.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608010906597:android:41b61193b715c0faf85d0c",
+        "android_client_info": {
+          "package_name": "com.example.projek_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbvvxeHiL4HYW2HWWLirgnxTsO7atxYLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
